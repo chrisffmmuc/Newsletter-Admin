@@ -1,0 +1,110 @@
+'''
+# Komplette Instruktion zur Newsletter-Erstellung für Amadoro Weinversand
+
+Ziel ist ein vollständiger Newsletter im HTML-Format, der exakt dem Stil der bisherigen Amadoro-Newsletter entspricht.
+
+## 1. Struktur
+- Logo ganz oben wie im Beispiel-Newsletter, Bildquelle des Logos bleibt dabei https://www.amadoro.de/media/25/f3/28/1764497691/logo_370x100c_128colors.png
+- Drei Abschnitte: "Einleitung", "Artikelliste", "Ausleitung".
+- Artikelliste in Tabellenform: Bild links (feste Breite 300px), Text rechts. Einheitliche Ausrichtung der rechten Textspalten sicherstellen.
+
+## 2. Einleitung
+- Beginnt immer mit:
+  Sehr geehrte[Anrede_Herr][Anrede_Frau] [lastname],
+- Text im Stil der bisherigen Newsletter:
+  - Bezug auf Jahreszeit, Wetter oder Event (z. B. Weihnachten, Ostern, Valentinstag, neue Jahrgänge).
+  - Erwähnung von 1–2 Highlights aus der Artikelliste.
+  - Optional: Deadline für rechtzeitige Bestellung vor Festen.
+- Abschluss:
+  Ich wünsche Ihnen eine schöne [Jahreszeit/Event] mit viel Genuss,
+- Signatur:
+  Ihr
+  Amadoro Weinversand
+
+  "La vida es demasiado corta para beber mal vino!"
+
+## 3. Artikelgestaltung
+
+### 3.1 Rahmen und Tabellen
+- Jeder Artikelblock wird in einer Tabelle mit oberem Rahmenbalken eingebettet:
+  <table style="BORDER-TOP: #d4d4d4 2px solid" cellspacing="0" cellpadding="0" width="100%" border="0"> ... </table>
+- Beim letzten Artikel zusätzlich ein unterer Rahmen:
+  style="BORDER-TOP: #d4d4d4 2px solid; BORDER-BOTTOM: #d4d4d4 2px solid"
+- Der frühere zusätzliche Balken direkt unterhalb des Bildes entfällt vollständig.
+
+### 3.2 Bildspalte links (fest 300px)
+- Linke Spalte für das Artikelbild hat feste Breite 300 Pixel:
+  <td style="PADDING-RIGHT: 10px" rowSpan="2" width="300">
+    <a href="ARTIKEL-URL">
+      <img src="BILD-URL" style="max-width: 200px; max-height: 300px; height: auto; width: auto;">
+    </a>
+  </td>
+
+### 3.3 Textspalte rechts
+- Überschrift: Schrift "Verdana", size="6", Farbe "#3f4c58", Link zum Artikel.
+- Lauftext: Schrift "Verdana", size="2", Farbe "#000000".
+- Bewertungen (falls vorhanden) am Anfang in roter Schrift "#c01513".
+- Preiszeile fett und rot, angepasst an Artikeltyp (z. B. Flasche, Box, Karton).
+- Inhaltsangabe exakt aus der Shopseite übernehmen, inkl. korrektem Inhalt und Preis pro Liter bzw. pro Einheit.
+- Lieferzeit angeben.
+- Versandkosten-Hinweis genau in dieser Form:
+  <a href="https://www.amadoro.de/versandkosten"><font color="#c01513" size="2" face="Verdana">Versandkostenfrei in Deutschland</font></a><font size="2" face="Verdana" font color="#000000">&nbsp;ab beliebigen 12 Flaschen oder ab 180 EUR Warenwert, sonst 7,95 EUR Versand je Paket bis 12 Flaschen.<br>Lieferzeit: 2-3 Werktage</font>
+
+### 3.4 Details-Button am Ende jedes Artikels
+- Der Details-Button wird unterhalb des Textes und Versandkostenhinweises eingefügt. Der Link muss die korrekte Shop-URL des Artikels sein:
+  <p>
+  <table cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+      <td align="left">
+        <table width="200" border="0">
+          <tr>
+            <td align="left">
+              <a title="Details und Bestellmöglichkeit" href="ARTIKEL-URL">
+                <font size="2" face="Verdana">
+                  <img alt="hier klicken für Details" src="file:///D:/3_amadoro/Bilder Shopware/btn_details_neu.png" width="165" height="43">
+                </font>
+              </a><br><font size="2" face="Verdana">&nbsp;</font>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  </p>
+
+## 4. Preisgenauigkeit und automatische Prüfung
+- Es gilt strikt: Preise müssen exakt den Preisen auf der jeweiligen Produktseite im Webshop entsprechen. Keine manuelle Schätzung oder Übernahme aus alten Templates.
+- Vorgehen:
+  1. Preis und Inhalt direkt von der Produktseite übernehmen.
+  2. Preis pro Liter oder Einheit rechnerisch aus dem übernommenen Preis und Inhalt berechnen und mit der Produktseite abgleichen.
+  3. Automatische Endkontrolle: Für jeden Artikel vor der Newsletter-Ausgabe Preis und berechneten Preis pro Liter/Einheit mit den auf der Produktseite angegebenen Werten vergleichen. Bei Abweichungen korrigieren und den korrigierten Wert in die Ausgabe übernehmen.
+- Hinweis: Falsche Preise im Newsletter können rechtliche Risiken verursachen und Kunden verärgern. Die Preisprüfung ist verbindlich und muss vor Versand stets erfolgreich abgeschlossen sein.
+
+## 5. Ausleitung
+- Exakt wie im Beispiel-Newsletter, mit allen Shop-Kategorien und Impressum.
+- Enthält das Motto:
+  "La vida es demasiado corta para beber mal vino!"
+
+## 6. Format der Ausgabe
+- Vollständiges HTML, gültig und analog zum Beispiel-Newsletter.
+- Ausgabe immer in einer Code-Box (```html ... ```), wenn der Newsletter erzeugt wird.
+
+## 7. Vorgehen zur Erstellung
+- Artikelbeschreibung der jeweiligen Shopseite aus der scraped texts Datei einlesen.
+- Text kürzen oder erweitern, sodass er die Länge eines typischen Newsletter-Artikels hat (nicht zu kurz, prägnant und informativ).
+- Artikeltext nach obigen Regeln erstellen, Bild- und Link-URLs korrekt setzen.
+- Preise und Preis pro Liter/Einheit automatisch prüfen und bei Bedarf korrigieren.
+- Kompletten Newsletter mit Einleitung, Artikeln und Ausleitung generieren.
+
+## 8. Zusammenfassung der wichtigsten Layout-Regeln
+- Einheitlicher oberer Rahmen bei jedem Artikel; zusätzlicher unterer Rahmen nur beim letzten Artikel.
+- Linke Bildspalte immer 300px breit, Texte rechts dadurch sauber ausgerichtet.
+- Details-Button mit korrektem Artikel-Link in jedem Artikelblock.
+- Keine separaten Rahmen unter dem Bild-TD setzen.
+
+## 9. Hinweis zur Konsistenz
+- Verwende durchgehend die Fonts und Farben wie angegeben ("Verdana", "#3f4c58" für Überschriften, "#c01513" für Hervorhebungen).
+- Achte auf korrekte Preise, Inhalte und Preis pro Liter oder Einheit, exakt gemäß Produktseite. Führe vor Versand eine automatische Preisprüfung und Korrektur durch.
+- Prüfe Links und Bild-URLs auf Korrektheit vor Versand.
+
+'''

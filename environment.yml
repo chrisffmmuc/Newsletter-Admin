@@ -1,0 +1,19 @@
+name: Newsletter-Agent
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Basis-Python
+  - python=3.13
+
+  # Conda-Pakete
+  - python-dotenv
+  - requests
+  - beautifulsoup4
+  - pillow
+  - playwright
+
+  # Pip-Sektion für Pakete, die du aus PyPI laden willst
+  - pip
+  - pip:
+      - google-adk
