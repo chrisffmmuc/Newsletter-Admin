@@ -82,11 +82,21 @@ Without the session, each call would be stateless, and the `CoordinatorAgent` wo
 
 ## Demo
 
+Additional comments and script extension: I included two .py files offering two different versions:
+a) **"newsletter_multi_agent_V1_without_Playwright.py"** is the easy-to-run version: This file offers a simpler version with 4 agents instead of 5 agents. Including coordinator agent, image download and resize agent, webpage scraper agent and newsletter writer agent. 
+Using this, the automatically downloaded and resized images might either need to be uploaded manually to webhosting space and links to these images might need to be set manually in the newsletter according to your hosting space for the images. Or you choose to send the pictures with your newsletter in your 3rd party newsletter sending tool.
+b) **"newsletter_multi_agent.py"** is the full version, including an additional agent using Playwright for image upload to a Shopware 6 webshop. This needs admin access to the webshop and specific media folders to be created for saving the images. This script is more sophisticated and automatically completes the links in the newsletter to the automatically uploaded images. But due to required webshop admin privileges it might be more difficult to be run.
+
 To run the project, a user simply executes the `newsletter_multi_agent.py` script from their terminal:
+```sh
+python newsletter_multi_agent_V1_without_Playwright.py
+```
+or for the full project (but needing Shopware 6 admin rights) run from terminal:
 ```sh
 python newsletter_multi_agent.py
 ```
-The script uses the file "Artikelliste_Newsletter.txt" including a manually defined list of URLs (of www.amadoro.de Webshop) to be included in the newsletter. This configuration file can be changed upfront script execution to create a newsletter for other articles, as needed.
+
+The script uses the file "Artikelliste_Newsletter.txt" including a manually defined list of URLs (of a real german webshop) to be included in the newsletter. This configuration file can be changed upfront script execution to create a newsletter for other articles, as needed.
 
 The script then provides a real-time log of the agent's actions. At the end it gives a confirmation message `✅ Newsletter successfully saved to: Newsletter_YYYYMMDD.html` and the `CoordinatorAgent` prints its final report, such as "All steps completed successfully."
 
@@ -98,19 +108,21 @@ a) Real-time log until newsletter completion, and
 b) Screenshot of opened newsletter in browser preview.
 
 
-## The Build
+## The Build (for "newsletter_multi_agent.py")
 
 *   **Core Framework:** Google Agent Development Kit (ADK)
 *   **Language:** Python
 *   **LLM Models:**
     *   `gemini-2.5-flash`: Used for the efficient, task-oriented Coordinator, Image, Upload, and Scraper agents.
     *   `gemini-2.5-pro`: Used for the `NewsletterWriterAgent` to provide the extra reasoning power needed for the complex creative and synthesis task.
+    *   Remark: The "newsletter_multi_agent_V1_without_Playwright.py" works with less complex models: `gemini-2.5-flash-lite` and `gemini-2.5-flash` (only for the `NewsletterWriterAgent`).
 *   **Key Libraries:**
     *   `google-generativeai`: Provides the core connectivity for the ADK.
     *   `requests` & `BeautifulSoup4`: Used for the robust web scraping of article data.
     *   `Pillow`: Used for all image processing (resizing, converting).
     *   `playwright`: Used for browser automation to handle the webshop login and file upload process.
     *   `asyncio`: Used to run the asynchronous agent framework.
+
 
 ## If I had more time, this is what I'd do
 
@@ -119,3 +131,4 @@ b) Screenshot of opened newsletter in browser preview.
 *   **A/B Testing Agent:** Add an agent that takes the final generated content and creates two versions with different introductions or subject lines, allowing for A/B testing of the newsletter's performance.
 *   **Full CI/CD Automation:** Integrate the script into a CI/CD pipeline (like GitHub Actions) that runs automatically on a schedule (e.g., every Tuesday), making the entire process truly "headless" and fully automated.
 *   **Vector Database for Content:** Instead of reading from a static HTML example, the `writer_agent` could retrieve stylistic examples from a vector database of past successful newsletters, allowing it to adapt its tone and style over time.
+
