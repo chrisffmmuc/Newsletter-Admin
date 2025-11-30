@@ -1,6 +1,6 @@
-# Capstone Project: The Automated E-Commerce Newsletter Agent
+# Capstone Project: Automated E-Commerce Newsletter Creation Agent
 
-This project, developed as part of the Kaggle "Agents Intensive" course, automates the creation of a product newsletter for the e-commerce company "Amadoro Weinversand".
+This project, developed as part of the Kaggle "Agents Intensive" course 2025, automates the creation of a product newsletter for an e-commerce company operating a webshop. 
 
 ## Problem Statement
 
@@ -133,5 +133,6 @@ b) Screenshot of opened newsletter in browser preview.
 *   **A/B Testing Agent:** Add an agent that takes the final generated content and creates two versions with different introductions or subject lines, allowing for A/B testing of the newsletter's performance.
 *   **Full CI/CD Automation:** Integrate the script into a CI/CD pipeline (like GitHub Actions) that runs automatically on a schedule (e.g., every Tuesday), making the entire process truly "headless" and fully automated.
 *   **Vector Database for Content:** Instead of reading from a static HTML example, the `writer_agent` could retrieve stylistic examples from a vector database of past successful newsletters, allowing it to adapt its tone and style over time.
+
 
 
