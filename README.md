@@ -83,15 +83,17 @@ Without the session, each call would be stateless, and the `CoordinatorAgent` wo
 ## Demo
 
 Additional comments and script extension: I included two .py files offering two different versions:
+
 a) **"newsletter_multi_agent_V1_without_Playwright.py"** is the easy-to-run version: This file offers a simpler version with 4 agents instead of 5 agents. Including coordinator agent, image download and resize agent, webpage scraper agent and newsletter writer agent. 
 Using this, the automatically downloaded and resized images might either need to be uploaded manually to webhosting space and links to these images might need to be set manually in the newsletter according to your hosting space for the images. Or you choose to send the pictures with your newsletter in your 3rd party newsletter sending tool.
+
 b) **"newsletter_multi_agent.py"** is the full version, including an additional agent using Playwright for image upload to a Shopware 6 webshop. This needs admin access to the webshop and specific media folders to be created for saving the images. This script is more sophisticated and automatically completes the links in the newsletter to the automatically uploaded images. But due to required webshop admin privileges it might be more difficult to be run.
 
-To run the project, a user simply executes the `newsletter_multi_agent.py` script from their terminal:
+To run the project, a user simply executes the script from their terminal:
 ```sh
 python newsletter_multi_agent_V1_without_Playwright.py
 ```
-or for the full project (but needing Shopware 6 admin rights) run from terminal:
+or for the full project (but needing Shopware 6 admin rights) execute from terminal:
 ```sh
 python newsletter_multi_agent.py
 ```
@@ -131,4 +133,5 @@ b) Screenshot of opened newsletter in browser preview.
 *   **A/B Testing Agent:** Add an agent that takes the final generated content and creates two versions with different introductions or subject lines, allowing for A/B testing of the newsletter's performance.
 *   **Full CI/CD Automation:** Integrate the script into a CI/CD pipeline (like GitHub Actions) that runs automatically on a schedule (e.g., every Tuesday), making the entire process truly "headless" and fully automated.
 *   **Vector Database for Content:** Instead of reading from a static HTML example, the `writer_agent` could retrieve stylistic examples from a vector database of past successful newsletters, allowing it to adapt its tone and style over time.
+
 
